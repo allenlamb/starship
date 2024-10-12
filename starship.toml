@@ -1,0 +1,64 @@
+format = """
+[╭─](dimmed) \
+$directory\
+$git_branch\
+$git_state\
+$git_status\
+$nix_shell\
+$python\
+$fill\
+$cmd_duration\
+$time\
+$line_break\
+$character\
+"""
+
+[fill]
+symbol = '─'
+style = 'dimmed'
+[directory]
+format = '[󰝰  $path ]($style)'
+style = "bold green"
+[character]
+success_symbol = "[╰─ ₍ ੭ᐢ..ᐢ\\)੭‧˚₊❤](dimmed)"
+error_symbol = "[╰─](dimmed)[\\(๑•̀ᗝ•́\\)૭](red)"
+vimcmd_symbol = "[❮](green)"
+
+[git_branch]
+format = "  [  $branch]($style)"
+style = "yellow"
+
+[git_status]
+format = "[[( [::](dimmed) $conflicted$untracked$modified$staged$renamed$deleted)](blue) ($ahead_behind$stashed)]($style)"
+style = "cyan"
+conflicted = " "
+untracked = "󰰨 "
+modified = "󰯲 "
+staged = "󰰢 "
+renamed = "󰰟 "
+deleted = "󰯵 "
+stashed = "≡"
+
+[git_state]
+format = '\([$state( $progress_current/$progress_total)]($style)\) '
+style = "bright-black"
+
+[cmd_duration]
+format = " [(took $duration 󱎫)]($style)"
+style = "dimmed"
+
+[python]
+format = "[$virtualenv]($style) "
+style = "bright-black"
+
+[nix_shell]
+format = ' [$symbol$state( \($name\))]($style) '
+symbol = " "
+style = "dimmed purple"
+
+[time]
+disabled = false
+format = " [$time]($style)"
+time_format = "%R"
+utc_time_offset = "local"
+style = "italic dimmed white"
